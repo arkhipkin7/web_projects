@@ -1,0 +1,33 @@
+{% extends "layout.jinja2" %}
+
+{% block title %}
+    My Baskets
+{% endblock %}
+
+{% block content %}
+    <table class="table table-hover table-inverse">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Products</th>
+            <th>Sum</th>
+            <th>Qr-code</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% if my_baskets %}
+            {% for my_basket in my_baskets %}
+                <tr>
+                    <td> {{ my_basket.id }}</td>
+                    <td> {{ my_basket.data }}</td>
+                    <td> {{ my_basket.price }}</td>
+                    <td><img src="static\{{ my_basket.qrcode }}.svg"></td>
+                    <td> {{ my_basket.datetime }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

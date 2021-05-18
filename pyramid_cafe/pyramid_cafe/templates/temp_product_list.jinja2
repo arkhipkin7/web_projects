@@ -1,0 +1,33 @@
+{% extends "layout.jinja2" %}
+
+{% block title %}
+Products Temp
+{% endblock %}
+
+{% block content %}
+<table class="table table-hover table-inverse">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if temp_products %}
+    {% for temp_product in temp_products %}
+    <tr>
+        <td> {{ temp_product.id }}</td>
+        <td> {{ temp_product.name }}</td>
+        <td> {{ temp_product.price }}</td>
+        <td>
+            {% if request.authenticated_userid %}
+            <a href="{{ request.route_url('add_product', id=product.id) }}">Add to Basket</a>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+    </tbody>
+</table>
+{% endblock %}

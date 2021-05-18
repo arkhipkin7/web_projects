@@ -1,0 +1,27 @@
+{% extends "layout.jinja2" %}
+
+{% block title %}
+    Info About Users
+{% endblock %}
+
+{% block content %}
+    <table class="table table-hover table-inverse">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Sum</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% if orders %}
+            {% for order in orders %}
+                <tr>
+                    <td><span class="name"> {{ order['username'] }}</span></td>
+                    <td><span class="name"> {{ order['sum'] }}</span></td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

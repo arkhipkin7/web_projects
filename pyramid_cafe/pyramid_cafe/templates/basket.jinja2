@@ -1,0 +1,33 @@
+{% extends "layout.jinja2" %}
+
+{% block title %}
+Basket
+{% endblock %}
+
+{% block content %}
+<table class="table table-hover table-inverse">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Product</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for product in products %}
+    <tr>
+        <td> {{ product.id }}</td>
+        <td> {{ product.name }}</td>
+        <td> {{ product.price }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div>
+    <form action="{{ request.route_url('checkout')}}" method="POST">
+        <input type="hidden" class="btn btn-info" name="price" value="{{ _sum  }}">
+        <input type="hidden" class="btn btn-info" name="data" value="{{ basket_body }}">
+        <input type="submit" class="btn btn-info" name="form.submitted" value="Confirm">
+    </form>
+</div>
+{% endblock %}

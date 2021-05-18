@@ -1,0 +1,38 @@
+{% extends "layout.jinja2" %}
+
+{% block title %}
+    Basket Info
+{% endblock %}
+
+{% block content %}
+    <table class="table table-hover table-inverse">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Order</th>
+            <th>Sum</th>
+            <th>Data</th>
+            <th>UUID</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if baskets %}
+            {% for basket in baskets %}
+                <tr>
+                    <td> {{ basket.id }}</td>
+                    <td> {{ basket.creator.name }}</td>
+                    <td> {{ basket.data }}</td>
+                    <td> {{ basket.price }}</td>
+                    <td> {{ basket.datetime }}</td>
+                    <td> {{ basket.qrcode }}</td>
+                    <td>
+                        <a href="{{ request.route_url('delete_basket', id=basket.id) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

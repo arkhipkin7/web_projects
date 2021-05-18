@@ -1,0 +1,39 @@
+{% extends "layout.jinja2" %}
+
+{% block title %}
+    Order
+{% endblock %}
+
+{% block content %}
+    <table class="table table-hover table-inverse">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Order</th>
+            <th>Sum</th>
+            <th>Data</th>
+            <th>UUID</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if result_search %}
+
+            {% for result in result_search %}
+                <tr>
+                    <td> {{ result.id }}</td>
+                    <td> {{ result.creator.name }}</td>
+                    <td> {{ result.data }}</td>
+                    <td> {{ result.price }}</td>
+                    <td> {{ result.datetime }}</td>
+                    <td> {{ result.qrcode }}</td>
+                    <td>
+                        <a href="{{ request.route_url('delete_basket', id=result.id) }}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
