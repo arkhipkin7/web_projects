@@ -1,0 +1,23 @@
+{% extends "catalog/base.html" %}
+
+{% block title %}
+<title>Alphabet Employees</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Alphabet List</h1>
+    <div>
+        <div>
+        {% for id_group, letters in letters_in_group.items %}
+            <a href="{% url 'alphabetical-list'%}?group={{id_group}}">{{letters}}</a>
+        {% endfor %}
+    </div>
+    </div>
+    <div>
+        {% for employee in employees%}
+        <p><a href="{% url 'employee-detail' employee.pk %}">{{employee}}</a></p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
