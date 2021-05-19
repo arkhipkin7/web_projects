@@ -1,0 +1,14 @@
+{% extends 'monitoring/base.html' %}
+
+{% block title %}
+    Create query
+{% endblock %}
+
+{% block content %}
+<h2>Hello</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Искать</button>
+</form>
+{% endblock %}
